@@ -1,0 +1,70 @@
+# TicketHub API v1 - URL Rewriting Rules
+# Enables clean URLs: /api/v1/tickets instead of /api/v1/index.php?endpoint=tickets
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /api/v1/
+
+    # Pass Authorization header through to PHP
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Don't rewrite if file/directory exists
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Rewrite all requests to index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    # CORS - Allow cross-origin requests
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    Header always set Access-Control-Max-Age "86400"
+
+    # Security headers
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # API Version
+    Header always set X-API-Version "1.0"
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Force UTF-8 encoding
+AddDefaultCharset UTF-8
+
+# Set content type for JSON
+<FilesMatch "\.json$">
+    ForceType application/json
+    Header set Content-Type "application/json; charset=utf-8"
+</FilesMatch>
+
+# Compression for JSON responses
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE text/plain
+</IfModule>
+
+# Cache control for API responses (don't cache by default)
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "^(.*\.log|.*\.sql|.*\.bak|.*\.backup)$">
+    Require all denied
+</FilesMatch>
+
+# Error documents (optional, API returns JSON errors)
+ErrorDocument 404 /api/v1/index.php
+ErrorDocument 403 /api/v1/index.php
+ErrorDocument 500 /api/v1/index.php

@@ -1,0 +1,84 @@
+<?php
+require_once(INCLUDE_DIR.'class.config.php');
+
+define('LOG_WARN',LOG_WARNING);
+
+class Sys {
+
+    public $loglevel=array(1=>'Error','Warning','Debug');
+
+    static function getConfig() {
+        $cfg= new Config(1);
+        return ($cfg && $cfg->getId())?$cfg:null;
+    }
+
+    static function alertAdmin($subject,$message,$log=false) {
+        global $cfg;
+
+        if(!$cfg || !($to=$cfg->getAdminEmail()))
+            $to=ADMIN_EMAIL;
+
+        $email=null;
+        if($cfg && !($email=$cfg->getAlertEmail()))
+            $email=$cfg->getDefaultEmail();
+
+        if($email) {
+            $email->send($to,$subject,$message);
+        }else {
+            Email::sendmail($to,$subject,$message,sprintf('"TicketHub Alerts"<%s>',$to));
+        }
+
+        if($log && is_object($cfg)) {
+            Sys::log(LOG_CRIT,$subject,$message,false);
+        }
+
+    }
+
+    static function log($priority,$title,$message,$alert=true) {
+        global $cfg;
+
+        switch($priority){
+            case LOG_EMERG:
+            case LOG_ALERT:
+            case LOG_CRIT:
+            case LOG_ERR:
+                $level=1;
+                if($alert) {
+                    Sys::alertAdmin($title,$message);
+                }
+                break;
+            case LOG_WARN:
+            case LOG_WARNING:
+                $level=2;
+                break;
+            case LOG_NOTICE:
+            case LOG_INFO:
+            case LOG_DEBUG:
+            default:
+                $level=3;
+        }
+        if($cfg && $cfg->getLogLevel()>=$level){
+            $loglevel=array(1=>'Error','Warning','Debug');
+            $sql='INSERT INTO '.SYSLOG_TABLE.' SET created=NOW(),updated=NOW() '.
+                 ',title='.db_input($title).
+                 ',log_type='.db_input($loglevel[$level]).
+                 ',log='.db_input($message).
+                 ',logger='.db_input($title).
+                 ',ip_address='.db_input($_SERVER['REMOTE_ADDR'] ?? '');
+            global $__db;
+            mysqli_query($__db, $sql);
+        }
+    }
+
+    static function purgeLogs(){
+        global $cfg;
+
+        if($cfg && ($gp=$cfg->getLogGraceperiod()) && is_numeric($gp)) {
+            $sql='DELETE  FROM '.SYSLOG_TABLE.' WHERE DATE_ADD(created, INTERVAL '.$gp.' MONTH)<=NOW()';
+            db_query($sql);
+        }
+
+    }
+}
+
+?>

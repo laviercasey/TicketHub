@@ -1,0 +1,15 @@
+.git
+*.md
+docker-compose.yml
+Dockerfile
+.dockerignore
+tests/
+phpunit.xml
+.env
+.env.example
+include/th-config.php
+node_modules/
+vendor/
+.gitignore
+.idea/
+.vscode/

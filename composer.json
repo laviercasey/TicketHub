@@ -1,0 +1,33 @@
+{
+    "name": "tickethub/tickethub",
+    "description": "TicketHub Support System",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "laviercasey",
+            "homepage": "https://github.com/laviercasey"
+        }
+    ],
+    "homepage": "https://github.com/laviercasey/TicketHub",
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TicketHub\\Mail\\": "include/Mail/"
+        },
+        "classmap": [
+            "include/"
+        ]
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite Unit",
+        "test:integration": "phpunit --testsuite Integration"
+    },
+    "require": {
+        "symfony/mailer": "^7.2",
+        "symfony/mime": "^7.2"
+    }
+}

@@ -1,0 +1,717 @@
+{
+	"info": {
+		"_postman_id": "tickethub-api-v1",
+		"name": "TicketHub REST API v1",
+		"description": "Complete API collection for TicketHub v1.0 with Bearer Token authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{api_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "api_token",
+			"value": "YOUR_TOKEN_HERE",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Utilities",
+			"item": [
+				{
+					"name": "API Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": ["{{base_url}}"]
+						}
+					}
+				},
+				{
+					"name": "Current Token Info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tokens/current",
+							"host": ["{{base_url}}"],
+							"path": ["tokens", "current"]
+						}
+					}
+				},
+				{
+					"name": "Token Usage Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tokens/usage",
+							"host": ["{{base_url}}"],
+							"path": ["tokens", "usage"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Tickets",
+			"item": [
+				{
+					"name": "List Tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets?page=1&per_page=20&status=open",
+							"host": ["{{base_url}}"],
+							"path": ["tickets"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "per_page", "value": "20"},
+								{"key": "status", "value": "open"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Ticket Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets/1",
+							"host": ["{{base_url}}"],
+							"path": ["tickets", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Ticket",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Иван Иванов\",\n  \"email\": \"user@example.com\",\n  \"phone\": \"+7 900 123-45-67\",\n  \"subject\": \"Не могу войти в систему\",\n  \"message\": \"Забыл пароль, прошу помочь восстановить доступ.\",\n  \"priority_id\": 2\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets",
+							"host": ["{{base_url}}"],
+							"path": ["tickets"]
+						}
+					}
+				},
+				{
+					"name": "Update Ticket",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"priority_id\": 3,\n  \"staff_id\": 5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets/1",
+							"host": ["{{base_url}}"],
+							"path": ["tickets", "1"]
+						}
+					}
+				},
+				{
+					"name": "Close Ticket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets/1",
+							"host": ["{{base_url}}"],
+							"path": ["tickets", "1"]
+						}
+					}
+				},
+				{
+					"name": "Get Ticket Messages",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets/1/messages",
+							"host": ["{{base_url}}"],
+							"path": ["tickets", "1", "messages"]
+						}
+					}
+				},
+				{
+					"name": "Add Ticket Message",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"message\": \"Ваш пароль был сброшен. Проверьте email.\",\n  \"alert\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets/1/messages",
+							"host": ["{{base_url}}"],
+							"path": ["tickets", "1", "messages"]
+						}
+					}
+				},
+				{
+					"name": "Get Ticket Notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tickets/1/notes",
+							"host": ["{{base_url}}"],
+							"path": ["tickets", "1", "notes"]
+						}
+					}
+				},
+				{
+					"name": "Add Ticket Note",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"note\": \"Связался с пользователем по телефону\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tickets/1/notes",
+							"host": ["{{base_url}}"],
+							"path": ["tickets", "1", "notes"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users?page=1&per_page=20",
+							"host": ["{{base_url}}"],
+							"path": ["users"],
+							"query": [
+								{"key": "page", "value": "1"},
+								{"key": "per_page", "value": "20"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get User Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/user@example.com",
+							"host": ["{{base_url}}"],
+							"path": ["users", "user@example.com"]
+						}
+					}
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Иван Петрович Иванов\",\n  \"phone\": \"+7 900 111-22-33\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/users/user@example.com",
+							"host": ["{{base_url}}"],
+							"path": ["users", "user@example.com"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Staff",
+			"item": [
+				{
+					"name": "List Staff",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/staff?is_active=true",
+							"host": ["{{base_url}}"],
+							"path": ["staff"],
+							"query": [
+								{"key": "is_active", "value": "true"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Staff Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/staff/1",
+							"host": ["{{base_url}}"],
+							"path": ["staff", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Departments",
+			"item": [
+				{
+					"name": "List Departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/departments",
+							"host": ["{{base_url}}"],
+							"path": ["departments"]
+						}
+					}
+				},
+				{
+					"name": "Get Department Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/departments/1",
+							"host": ["{{base_url}}"],
+							"path": ["departments", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Help Topics",
+			"item": [
+				{
+					"name": "List Help Topics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/help-topics",
+							"host": ["{{base_url}}"],
+							"path": ["help-topics"]
+						}
+					}
+				},
+				{
+					"name": "Get Help Topic Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/help-topics/1",
+							"host": ["{{base_url}}"],
+							"path": ["help-topics", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Priorities",
+			"item": [
+				{
+					"name": "List Priorities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/priorities",
+							"host": ["{{base_url}}"],
+							"path": ["priorities"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "List Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks?status=in_progress",
+							"host": ["{{base_url}}"],
+							"path": ["tasks"],
+							"query": [
+								{"key": "status", "value": "in_progress"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Task Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/1",
+							"host": ["{{base_url}}"],
+							"path": ["tasks", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Настроить сервер\",\n  \"board_id\": 1,\n  \"description\": \"Установить и настроить веб-сервер\",\n  \"priority\": \"high\",\n  \"deadline\": \"2025-02-20T18:00:00+00:00\",\n  \"assignees\": [5, 7]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks",
+							"host": ["{{base_url}}"],
+							"path": ["tasks"]
+						}
+					}
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Настроить веб-сервер Apache\",\n  \"priority\": \"urgent\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/1",
+							"host": ["{{base_url}}"],
+							"path": ["tasks", "1"]
+						}
+					}
+				},
+				{
+					"name": "Update Task Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"status\": \"completed\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/1/status",
+							"host": ["{{base_url}}"],
+							"path": ["tasks", "1", "status"]
+						}
+					}
+				},
+				{
+					"name": "Add Task Assignee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"staff_id\": 8,\n  \"role\": \"assignee\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/tasks/1/assignees",
+							"host": ["{{base_url}}"],
+							"path": ["tasks", "1", "assignees"]
+						}
+					}
+				},
+				{
+					"name": "Remove Task Assignee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/1/assignees/8",
+							"host": ["{{base_url}}"],
+							"path": ["tasks", "1", "assignees", "8"]
+						}
+					}
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tasks/1",
+							"host": ["{{base_url}}"],
+							"path": ["tasks", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Task Boards",
+			"item": [
+				{
+					"name": "List Task Boards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/taskboards",
+							"host": ["{{base_url}}"],
+							"path": ["taskboards"]
+						}
+					}
+				},
+				{
+					"name": "Get Task Board Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/taskboards/1",
+							"host": ["{{base_url}}"],
+							"path": ["taskboards", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create Task Board",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"board_name\": \"Проект Alpha\",\n  \"board_type\": \"project\",\n  \"description\": \"Разработка нового продукта\",\n  \"color\": \"#3498db\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/taskboards",
+							"host": ["{{base_url}}"],
+							"path": ["taskboards"]
+						}
+					}
+				},
+				{
+					"name": "Update Task Board",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"board_name\": \"Проект Alpha v2\",\n  \"description\": \"Обновленное описание проекта\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/taskboards/1",
+							"host": ["{{base_url}}"],
+							"path": ["taskboards", "1"]
+						}
+					}
+				},
+				{
+					"name": "Delete Task Board",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/taskboards/1",
+							"host": ["{{base_url}}"],
+							"path": ["taskboards", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Knowledge Base",
+			"item": [
+				{
+					"name": "List KB Documents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/kb/documents?audience=all",
+							"host": ["{{base_url}}"],
+							"path": ["kb", "documents"],
+							"query": [
+								{"key": "audience", "value": "all"}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get KB Document Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/kb/documents/1",
+							"host": ["{{base_url}}"],
+							"path": ["kb", "documents", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create KB Document (Link)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Инструкция по работе с API\",\n  \"doc_type\": \"link\",\n  \"audience\": \"staff\",\n  \"external_url\": \"https://docs.google.com/document/d/abc123\",\n  \"description\": \"Подробная инструкция для разработчиков\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/kb/documents",
+							"host": ["{{base_url}}"],
+							"path": ["kb", "documents"]
+						}
+					}
+				},
+				{
+					"name": "Update KB Document",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Обновленная инструкция по API\",\n  \"description\": \"Новое описание\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/kb/documents/1",
+							"host": ["{{base_url}}"],
+							"path": ["kb", "documents", "1"]
+						}
+					}
+				},
+				{
+					"name": "Search KB Documents",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"q\": \"настройка сервера\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/kb/documents/search",
+							"host": ["{{base_url}}"],
+							"path": ["kb", "documents", "search"]
+						}
+					}
+				},
+				{
+					"name": "Delete KB Document",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/kb/documents/1",
+							"host": ["{{base_url}}"],
+							"path": ["kb", "documents", "1"]
+						}
+					}
+				}
+			]
+		}
+	]
+}

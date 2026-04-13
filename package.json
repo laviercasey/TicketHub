@@ -1,0 +1,17 @@
+{
+  "name": "tickethub",
+  "version": "1.0.0",
+  "description": "TicketHub - Ticket management, task tracking and knowledge base system",
+  "license": "GPL-3.0",
+  "author": "laviercasey",
+  "homepage": "https://github.com/laviercasey/TicketHub",
+  "private": true,
+  "scripts": {
+    "build:css": "npx tailwindcss -i src/input.css -o styles/tickethub.css --minify && npx tailwindcss -i src/input.css -o scp/css/tickethub-scp.css --minify",
+    "watch:css": "npx tailwindcss -i src/input.css -o styles/tickethub.css --watch",
+    "test": "php vendor/bin/phpunit"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

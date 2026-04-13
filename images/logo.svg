@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="ticket" x1="140" y1="120" x2="372" y2="392" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e0e7ff"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Ticket shape (rounded rectangle with notches) -->
+  <rect x="140" y="100" width="232" height="312" rx="20" fill="url(#ticket)" opacity="0.95"/>
+  <!-- Left notch -->
+  <circle cx="140" cy="256" r="18" fill="#6366f1"/>
+  <!-- Right notch -->
+  <circle cx="372" cy="256" r="18" fill="#6366f1"/>
+  <!-- Dashed line between notches -->
+  <line x1="170" y1="256" x2="342" y2="256" stroke="#6366f1" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.4"/>
+  <!-- Header lines (ticket title area) -->
+  <rect x="180" y="145" width="152" height="14" rx="7" fill="#6366f1" opacity="0.7"/>
+  <rect x="180" y="172" width="108" height="10" rx="5" fill="#6366f1" opacity="0.3"/>
+  <!-- Checkmark circle (resolved status) -->
+  <circle cx="256" cy="218" r="5" fill="#22c55e" opacity="0.6"/>
+  <circle cx="276" cy="218" r="5" fill="#eab308" opacity="0.6"/>
+  <circle cx="296" cy="218" r="5" fill="#6366f1" opacity="0.4"/>
+  <!-- Bottom section - hub/connection dots -->
+  <circle cx="210" cy="310" r="12" fill="#6366f1" opacity="0.6"/>
+  <circle cx="256" cy="290" r="16" fill="#6366f1" opacity="0.8"/>
+  <circle cx="302" cy="310" r="12" fill="#6366f1" opacity="0.6"/>
+  <!-- Connection lines (hub concept) -->
+  <line x1="222" y1="310" x2="244" y2="296" stroke="#6366f1" stroke-width="2.5" opacity="0.5"/>
+  <line x1="268" y1="296" x2="290" y2="310" stroke="#6366f1" stroke-width="2.5" opacity="0.5"/>
+  <!-- Bottom detail lines -->
+  <rect x="195" y="350" width="122" height="8" rx="4" fill="#6366f1" opacity="0.25"/>
+  <rect x="215" y="368" width="82" height="8" rx="4" fill="#6366f1" opacity="0.15"/>
+</svg>
