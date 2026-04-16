@@ -1,0 +1,57 @@
+services:
+  web:
+    image: ghcr.io/laviercasey/TicketHub:latest
+    container_name: tickethub-web
+    restart: unless-stopped
+    expose:
+      - "80"
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: .env
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost/login.php"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - tickethub-internal
+      - caddy-net
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+
+  db:
+    image: mysql:8.0
+    container_name: tickethub-db
+    restart: unless-stopped
+    command: >-
+      --sql-mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
+      ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+    env_file: .env
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - tickethub-internal
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+
+volumes:
+  db_data:
+
+networks:
+  tickethub-internal:
+    driver: bridge
+  caddy-net:
+    external: true
