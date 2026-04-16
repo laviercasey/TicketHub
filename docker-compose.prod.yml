@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/laviercasey/TicketHub:latest
+    image: ghcr.io/laviercasey/tickethub:latest
     container_name: tickethub-web
     restart: unless-stopped
     expose:
