@@ -52,7 +52,7 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             cd /opt/apps/tickethub
-            docker pull ghcr.io/laviercasey/TicketHub:latest
+            docker pull ghcr.io/laviercasey/tickethub:latest
             docker compose down
             docker compose up -d
             sleep 10
