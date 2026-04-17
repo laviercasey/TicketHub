@@ -45,19 +45,32 @@ jobs:
     needs: build-push
     environment: production
     steps:
-      - uses: appleboy/ssh-action@v1
+      - uses: actions/checkout@v4
+      - name: Copy compose to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          source: docker-compose.prod.yml
+          target: /opt/apps/tickethub/
+      - name: Restart stack
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
             cd /opt/apps/tickethub
+            mv -f docker-compose.prod.yml docker-compose.yml
             docker pull ghcr.io/laviercasey/tickethub:latest
             docker compose down
             docker compose up -d
-            sleep 10
+            sleep 15
             if ! docker compose ps web | grep -q "healthy"; then
               echo "Health check failed!"
+              docker compose logs --tail=50 db
+              docker compose logs --tail=50 web
               exit 1
             fi
             docker image prune -f
