@@ -32,7 +32,7 @@ class CaptchaTest extends TestCase
     public function testConstructorHashIsAlphanumeric(): void
     {
         $captcha = new Captcha(10);
-        $this->assertMatchesRegularExpression('/^[A-HJ-NP-TV-Z2-9]+$/', $captcha->hash);
+        $this->assertMatchesRegularExpression('/^[ABCDEFGHJKMNPRSTUVWXYZ23456789]+$/', $captcha->hash);
     }
 
     public function testConstructorSetFont(): void

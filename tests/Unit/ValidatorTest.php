@@ -131,7 +131,7 @@ class ValidatorTest extends TestCase
         ];
         $this->validator->setFields($fields);
 
-        $this->assertTrue($this->validator->validate(['pass' => 'secure123']));
+        $this->assertTrue($this->validator->validate(['pass' => 'SecurePassword123']));
         $this->assertFalse($this->validator->validate(['pass' => 'abc']));
     }
 

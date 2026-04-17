@@ -1,6 +1,7 @@
 FROM composer:2 AS composer-deps
 WORKDIR /app
 COPY composer.json composer.lock ./
+COPY include/ ./include/
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
 FROM node:22-slim AS css-build

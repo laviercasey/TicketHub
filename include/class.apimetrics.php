@@ -400,16 +400,18 @@ class ApiMetrics {
         $missing = array();
         foreach ($tables as $table) {
             global $__db;
-            $sql = "SHOW TABLES LIKE '" . mysqli_real_escape_string($__db, $table) . "'";
+            $escaped = ($__db instanceof \mysqli) ? mysqli_real_escape_string($__db, $table) : addslashes($table);
+            $sql = "SHOW TABLES LIKE '" . $escaped . "'";
             $result = self::_query($sql);
-            if (!$result || !mysqli_num_rows($result)) {
+            if (!$result || !db_num_rows($result)) {
                 $missing[] = $table;
             }
         }
 
         if (defined('API_AUDIT_LOG_TABLE')) {
             global $__db;
-            $sql = "SHOW TABLES LIKE '" . mysqli_real_escape_string($__db, API_AUDIT_LOG_TABLE) . "'";
+            $escaped = ($__db instanceof \mysqli) ? mysqli_real_escape_string($__db, API_AUDIT_LOG_TABLE) : addslashes(API_AUDIT_LOG_TABLE);
+            $sql = "SHOW TABLES LIKE '" . $escaped . "'";
             $result = self::_query($sql);
             if (!$result || !db_num_rows($result)) {
                 $missing[] = API_AUDIT_LOG_TABLE;
@@ -537,7 +539,8 @@ class ApiMetrics {
 
         if (defined('API_AUDIT_LOG_TABLE')) {
             global $__db;
-            $sql = "SHOW TABLES LIKE '" . mysqli_real_escape_string($__db, API_AUDIT_LOG_TABLE) . "'";
+            $escaped = ($__db instanceof \mysqli) ? mysqli_real_escape_string($__db, API_AUDIT_LOG_TABLE) : addslashes(API_AUDIT_LOG_TABLE);
+            $sql = "SHOW TABLES LIKE '" . $escaped . "'";
             $result = self::_query($sql);
             if ($result && db_num_rows($result)) {
                 $sql = "SELECT COUNT(*) as count FROM " . API_AUDIT_LOG_TABLE . "

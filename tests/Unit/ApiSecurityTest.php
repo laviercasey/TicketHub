@@ -4,6 +4,12 @@ use PHPUnit\Framework\TestCase;
 
 class ApiSecurityTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        DatabaseMock::reset();
+        $_SESSION = [];
+    }
+
     public function testGetSecurityHeaders(): void
     {
         $headers = ApiSecurity::getSecurityHeaders();
@@ -375,10 +381,13 @@ class ApiSecurityTest extends TestCase
     public function testRecordAndCheckBruteForce(): void
     {
         $_SESSION = [];
+        DatabaseMock::reset();
 
         for ($i = 0; $i < 5; $i++) {
             ApiSecurity::recordFailedAttempt('brute-test');
         }
+
+        DatabaseMock::setQueryResult('SELECT COUNT', [['cnt' => 5]]);
 
         $this->assertFalse(ApiSecurity::checkBruteForce('brute-test'));
     }
