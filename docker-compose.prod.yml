@@ -28,9 +28,7 @@ services:
     image: mysql:8.0
     container_name: tickethub-db
     restart: unless-stopped
-    command: >-
-      --sql-mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,
-      ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
+    command: --sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION
     env_file: .env
     volumes:
       - db_data:/var/lib/mysql
