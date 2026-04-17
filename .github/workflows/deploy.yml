@@ -36,8 +36,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.sha_short }}
+            ghcr.io/laviercasey/tickethub:latest
+            ghcr.io/laviercasey/tickethub:${{ steps.meta.outputs.sha_short }}
 
   deploy:
     name: Deploy
