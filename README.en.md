@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0-%23FF6B35.svg?style=for-the-badge" alt="v1.0">
+  <img src="https://img.shields.io/badge/version-0.1.0-%23FF6B35.svg?style=for-the-badge" alt="v0.1.0">
   <img src="https://img.shields.io/badge/status-active_development-%2300C853.svg?style=for-the-badge" alt="Active Development">
   <img src="https://img.shields.io/badge/PHP-8.4-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.4">
   <img src="https://img.shields.io/badge/MySQL-8.0-%234479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL 8.0">
@@ -24,6 +24,12 @@
   <img src="https://img.shields.io/badge/REST_API-v1-%2343853D.svg?style=for-the-badge&logo=json&logoColor=white" alt="REST API">
   <img src="https://img.shields.io/badge/Docker-Ready-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
   <img src="https://img.shields.io/badge/PHPUnit-10.5-%23366488.svg?style=for-the-badge&logo=php&logoColor=white" alt="PHPUnit">
+</p>
+
+<p align="center">
+  <a href="https://tickethub.lavier.tech" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Visit%20Website-tickethub.lavier.tech-%23FF6B35?style=for-the-badge&labelColor=2D3748" alt="Visit TicketHub">
+  </a>
 </p>
 
 <p align="center">
@@ -53,9 +59,9 @@
 
 ## About
 
-**TicketHub v1.0** is a full-featured support ticket management system with project/task tracking and a knowledge base, evolved from **osTicket v1.6 RUS**. The project has been completely reworked: migrated to **PHP 8.4** and **MySQL 8.0**, frontend rebuilt with **Tailwind CSS 3**, added **REST API v1** with Bearer token authentication, implemented a task management module with Kanban boards, an inventory system, a knowledge base, and an extended admin panel. The email subsystem is powered by **Symfony Mailer/Mime**. The entire infrastructure is containerized with **Docker** and ready for deployment.
+**TicketHub v0.1.0** is a full-featured support ticket management system with project/task tracking and a knowledge base, evolved from **osTicket v1.6 RUS**. The project has been completely reworked: migrated to **PHP 8.4** and **MySQL 8.0**, frontend rebuilt with **Tailwind CSS 3**, added **REST API v1** with Bearer token authentication, implemented a task management module with Kanban boards, an inventory system, a knowledge base, and an extended admin panel. The email subsystem is powered by **Symfony Mailer/Mime**. The entire infrastructure is containerized with **Docker** and ready for deployment.
 
-> The project is under **active development**. The current version - **v1.0** - includes the complete core feature set for production use. Updates and new modules are released regularly.
+> The project is under **active development**. Updates are published in [Releases](https://github.com/laviercasey/TicketHub/releases).
 
 ---
 
@@ -445,47 +451,6 @@ Comprehensive database optimization has been performed:
 </details>
 
 <p align="right"><a href="#top">back to top</a></p>
-
----
-
-## Roadmap
-
-> The project is under **active development**. Below is the development plan organized by version milestones.
-
-### v1.0 - current release
-
-- [x] Full migration to PHP 8.4 and MySQL 8.0
-- [x] REST API v1 with Bearer tokens and granular permissions
-- [x] Task module with Kanban boards, lists, calendar views
-- [x] Inventory management system
-- [x] Knowledge base for staff and clients
-- [x] Email subsystem migration to Symfony Mailer/Mime
-- [x] Docker containerization
-- [x] Database optimization (92.5% query reduction)
-- [x] Task automation and templates
-- [x] PHPUnit tests (50+ test classes)
-
-### v1.1 - upcoming updates
-
-- [ ] **Webhook System** - event notifications for tickets and tasks to external URLs
-- [ ] **Telegram Integration** - alerts for new tickets and tasks
-- [ ] **Report Export** - export tickets and tasks to Excel/CSV
-- [ ] **Assignment Normalization** - junction table instead of LIKE queries on `andstaffs_id`
-- [ ] **PDO Migration** - prepared statements instead of string escaping
-
-### v1.2 - mid-term plans
-
-- [ ] **Analytics Dashboard** - ticket funnel, average resolution time, department load
-- [ ] **SLA Module** - track response and resolution time compliance
-- [ ] **PWA** - Progressive Web App with offline access and push notifications
-- [ ] **Job Queue** - background execution for automations and email dispatching
-
-### v2.0 - long-term vision
-
-- [ ] **Internationalization** - full UI i18n via admin panel
-- [ ] **PHP 8.4 Typing** - typed properties, enums, readonly classes
-- [ ] **CI/CD** - automated testing and deployment pipeline
-- [ ] **Plugin System** - extensible module architecture
 
 ---
 

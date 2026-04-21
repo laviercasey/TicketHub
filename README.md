@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0-%23FF6B35.svg?style=for-the-badge" alt="v1.0">
+  <img src="https://img.shields.io/badge/version-0.1.0-%23FF6B35.svg?style=for-the-badge" alt="v0.1.0">
   <img src="https://img.shields.io/badge/status-active_development-%2300C853.svg?style=for-the-badge" alt="Active Development">
   <img src="https://img.shields.io/badge/PHP-8.4-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.4">
   <img src="https://img.shields.io/badge/MySQL-8.0-%234479A1.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL 8.0">
@@ -24,6 +24,12 @@
   <img src="https://img.shields.io/badge/REST_API-v1-%2343853D.svg?style=for-the-badge&logo=json&logoColor=white" alt="REST API">
   <img src="https://img.shields.io/badge/Docker-Ready-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
   <img src="https://img.shields.io/badge/PHPUnit-10.5-%23366488.svg?style=for-the-badge&logo=php&logoColor=white" alt="PHPUnit">
+</p>
+
+<p align="center">
+  <a href="https://tickethub.lavier.tech" target="_blank" rel="noopener">
+    <img src="https://img.shields.io/badge/%F0%9F%8C%90%20Открыть%20сайт-tickethub.lavier.tech-%23FF6B35?style=for-the-badge&labelColor=2D3748" alt="Открыть TicketHub">
+  </a>
 </p>
 
 <p align="center">
@@ -53,9 +59,9 @@
 
 ## О проекте
 
-**TicketHub v1.0** - полнофункциональная система управления обращениями (тикетами), проектами, задачами и базой знаний, выросшая из **osTicket v1.6 RUS**. Проект полностью переработан: миграция на **PHP 8.4** и **MySQL 8.0**, переписан фронтенд на **Tailwind CSS 3**, добавлен **REST API v1** с Bearer-токенами, реализован модуль управления задачами с Kanban-досками, система инвентаризации, база знаний и расширенная админ-панель. Email-подсистема построена на **Symfony Mailer/Mime**. Вся инфраструктура упакована в **Docker** и готова к деплою.
+**TicketHub v0.1.0** - полнофункциональная система управления обращениями (тикетами), проектами, задачами и базой знаний, выросшая из **osTicket v1.6 RUS**. Проект полностью переработан: миграция на **PHP 8.4** и **MySQL 8.0**, переписан фронтенд на **Tailwind CSS 3**, добавлен **REST API v1** с Bearer-токенами, реализован модуль управления задачами с Kanban-досками, система инвентаризации, база знаний и расширенная админ-панель. Email-подсистема построена на **Symfony Mailer/Mime**. Вся инфраструктура упакована в **Docker** и готова к деплою.
 
-> Проект находится в стадии **активной разработки**. Текущая версия - **v1.0** - включает полный базовый функционал для продуктивного использования. Дальнейшие обновления и новые модули выпускаются регулярно.
+> Проект находится в стадии **активной разработки**. Обновления публикуются в разделе [Releases](https://github.com/laviercasey/TicketHub/releases).
 
 ---
 
@@ -443,49 +449,6 @@ tickethub/
 Добавлено 28 индексов базы данных. Время загрузки страниц ускорено в 5-8 раз.
 
 </details>
-
-<p align="right"><a href="#top">наверх</a></p>
-
----
-
-## Планы развития
-
-> Проект находится в стадии **активной разработки**. Ниже представлен план развития, разбитый по версиям.
-
-### v1.0 - текущая версия
-
-- [x] Полная миграция на PHP 8.4 и MySQL 8.0
-- [x] REST API v1 с Bearer-токенами и гранулярными правами
-- [x] Модуль задач с Kanban-досками, списками, календарем
-- [x] Система инвентаризации
-- [x] База знаний для сотрудников и клиентов
-- [x] Миграция email-подсистемы на Symfony Mailer/Mime
-- [x] Docker-контейнеризация
-- [x] Оптимизация БД (92.5% сокращение запросов)
-- [x] Автоматизация задач и шаблоны
-- [x] PHPUnit-тесты (50+ тестовых классов)
-
-### v1.1 - ближайшие обновления
-
-- [ ] **Webhook-система** - уведомления о событиях тикетов и задач на внешние URL
-- [ ] **Интеграция с Telegram** - оповещения о новых тикетах и задачах
-- [ ] **Экспорт отчетов** - выгрузка тикетов и задач в Excel/CSV
-- [ ] **Нормализация назначений** - таблица связей вместо LIKE-запросов по `andstaffs_id`
-- [ ] **Миграция на PDO** - prepared statements вместо строковой экранизации
-
-### v1.2 - среднесрочные планы
-
-- [ ] **Дашборд аналитики** - воронка тикетов, среднее время решения, нагрузка на отделы
-- [ ] **Модуль SLA** - контроль соблюдения времени ответа и решения
-- [ ] **PWA** - Progressive Web App с офлайн-доступом и push-уведомлениями
-- [ ] **Очередь задач** - фоновое выполнение автоматизаций и email-рассылок
-
-### v2.0 - долгосрочное развитие
-
-- [ ] **Интернационализация** - полная i18n интерфейса через админ-панель
-- [ ] **Типизация PHP 8.4** - typed properties, enums, readonly классы
-- [ ] **CI/CD** - автоматизированное тестирование и деплой
-- [ ] **Плагин-система** - расширяемая архитектура модулей
 
 <p align="right"><a href="#top">наверх</a></p>
 
