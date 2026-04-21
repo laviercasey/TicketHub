@@ -14,6 +14,13 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?=Format::htmlchars($title)?></title>
 
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180.png">
+    <meta name="theme-color" content="#4f46e5">
+
     <!-- Google Fonts: Poppins + Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
