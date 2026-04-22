@@ -10,7 +10,7 @@ services:
         condition: service_healthy
     env_file: .env
     healthcheck:
-      test: ["CMD", "curl", "-sf", "http://localhost/login.php"]
+      test: ["CMD", "curl", "-sf", "http://localhost/healthz"]
       interval: 30s
       timeout: 5s
       retries: 3
@@ -32,6 +32,7 @@ services:
     env_file: .env
     volumes:
       - db_data:/var/lib/mysql
+      - ./setup/inc/tickethub-v1.0.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 5s

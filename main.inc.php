@@ -57,8 +57,35 @@
     require($configfile);
     define('CONFIG_FILE',$configfile);
 
-    if(!defined('THINSTALLED') || !THINSTALLED) {
-        header('Location: '.ROOT_PATH.'setup/');
+    function th_is_installed(): bool {
+        static $cached = null;
+        if ($cached !== null) {
+            return $cached;
+        }
+        if (!defined('TABLE_PREFIX')) {
+            $cached = false;
+            return false;
+        }
+        global $__db;
+        if (!$__db) {
+            $cached = false;
+            return false;
+        }
+        $result = @mysqli_query($__db, "SELECT thversion FROM " . TABLE_PREFIX . "config WHERE id=1 LIMIT 1");
+        if (!$result) {
+            $cached = false;
+            return false;
+        }
+        $row = mysqli_fetch_assoc($result);
+        $cached = ($row !== null && isset($row['thversion']) && $row['thversion'] !== '');
+        return $cached;
+    }
+
+    if (php_sapi_name() !== 'cli' && !th_is_installed()) {
+        http_response_code(503);
+        header('Content-Type: text/plain; charset=utf-8');
+        header('Cache-Control: no-store');
+        echo "TicketHub: database not initialized. Run bin/db-bootstrap.php.\n";
         exit;
     }
 
