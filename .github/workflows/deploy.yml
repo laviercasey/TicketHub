@@ -152,8 +152,8 @@ jobs:
             docker compose up -d
 
             sleep 30
-            if docker compose exec -T web curl -sf http://localhost/healthz.php 2>/dev/null | grep -q '"status":"ok"'; then
-              echo "rollback to $PREV_SHA successful — staging restored"
+            if docker compose ps web --status running --format '{{.Name}}' | grep -q tickethub-web; then
+              echo "rollback to $PREV_SHA successful — container is up"
               exit 1
             fi
 

@@ -1,11 +1,20 @@
 <?php
 declare(strict_types=1);
 
-define('ROOT_PATH', '../../');
-require_once(ROOT_PATH . 'main.inc.php');
+if (!defined('TABLE_PREFIX')) {
+    if (!defined('ROOT_PATH')) {
+        define('ROOT_PATH', '../../');
+    }
+    require_once(ROOT_PATH . 'main.inc.php');
+}
 
-define('MIGRATIONS_TABLE', TABLE_PREFIX . 'migrations');
-define('MIGRATIONS_DIR', dirname(__FILE__) . '/migrations/');
+if (!defined('MIGRATIONS_TABLE')) {
+    define('MIGRATIONS_TABLE', TABLE_PREFIX . 'migrations');
+}
+
+if (!defined('MIGRATIONS_DIR')) {
+    define('MIGRATIONS_DIR', dirname(__FILE__) . '/migrations/');
+}
 
 class MigrationManager
 {
