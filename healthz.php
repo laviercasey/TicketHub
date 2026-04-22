@@ -62,20 +62,14 @@ if ($dbVersion === null || $dbVersion === '') {
     exit;
 }
 
-$appVersion = (string)getenv('APP_VERSION');
-if ($appVersion === '') {
-    $configPhpFile = __DIR__ . '/include/th-config.php';
-    $configSampleFile = __DIR__ . '/include/th-config.sample.php';
-    $configLoadFile = file_exists($configPhpFile) ? $configPhpFile : (file_exists($configSampleFile) ? $configSampleFile : '');
-    if ($configLoadFile !== '') {
-        @include_once $configLoadFile;
-    }
-    $appVersion = defined('APP_VERSION') ? (string)APP_VERSION : '';
+$schemaVersion = (string)getenv('SCHEMA_VERSION');
+if ($schemaVersion === '') {
+    $schemaVersion = '1.0';
 }
 
-if ($appVersion !== '' && $dbVersion !== $appVersion) {
+if ($dbVersion !== $schemaVersion) {
     http_response_code(503);
-    echo json_encode(['status' => 'drift', 'db_version' => $dbVersion, 'app_version' => $appVersion]);
+    echo json_encode(['status' => 'drift', 'db_schema' => $dbVersion, 'code_schema' => $schemaVersion]);
     mysqli_close($conn);
     exit;
 }

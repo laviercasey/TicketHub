@@ -11,6 +11,7 @@ define('DBUSER', getenv('DB_USER') ?: '');
 define('DBPASS', getenv('DB_PASS') ?: '');
 
 define('TABLE_PREFIX','th_');
-define('APP_VERSION', '1.0');
+define('SCHEMA_VERSION', '1.0');
+define('PRODUCT_VERSION', '0.1.0');
 
 ?>

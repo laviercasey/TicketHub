@@ -122,8 +122,8 @@ if (!defined('TABLE_PREFIX')) {
     define('TABLE_PREFIX', $prefix);
 }
 
-if (!defined('APP_VERSION')) {
-    define('APP_VERSION', '1.0');
+if (!defined('SCHEMA_VERSION')) {
+    define('SCHEMA_VERSION', (string)(getenv('SCHEMA_VERSION') ?: '1.0'));
 }
 
 if (!function_exists('db_query')) {
@@ -257,7 +257,7 @@ try {
         }
     }
 
-    $safeVersion = mysqli_real_escape_string($conn, APP_VERSION);
+    $safeVersion = mysqli_real_escape_string($conn, SCHEMA_VERSION);
     mysqli_query($conn, "INSERT IGNORE INTO " . TABLE_PREFIX . "config (id, updated, thversion) VALUES (1, NOW(), '{$safeVersion}')");
     $updateResult = mysqli_query($conn, "UPDATE " . TABLE_PREFIX . "config SET thversion='{$safeVersion}' WHERE id=1");
     if (!$updateResult) {
