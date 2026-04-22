@@ -2,6 +2,22 @@
 <?php
 declare(strict_types=1);
 
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+
+register_shutdown_function(function () {
+    $err = error_get_last();
+    if ($err !== null && in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
+        fwrite(STDERR, "[bootstrap] FATAL {$err['message']} at {$err['file']}:{$err['line']}\n");
+    }
+});
+
+set_error_handler(function ($severity, $message, $file, $line) {
+    fwrite(STDERR, "[bootstrap] PHP_ERROR ({$severity}) {$message} at {$file}:{$line}\n");
+    return false;
+});
+
 if (php_sapi_name() !== 'cli') {
     fwrite(STDERR, "CLI only\n");
     exit(1);
@@ -181,9 +197,13 @@ try {
         define('MIGRATIONS_DIR', $projectRoot . '/setup/install/migrations/');
     }
 
+    bootstrapLog('INFO', 'requiring migration manager');
     require_once $migrationFile;
 
+    bootstrapLog('INFO', 'creating migration manager');
     $manager = new MigrationManager();
+
+    bootstrapLog('INFO', 'running migrations');
     $migrationResult = $manager->runMigrations();
 
     if (!empty($migrationResult['errors'])) {

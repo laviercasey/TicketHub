@@ -357,7 +357,9 @@ class ' . $className . '
     }
 }
 
-if (php_sapi_name() === 'cli') {
+$isDirectInvocation = isset($argv[0]) && realpath($argv[0]) === __FILE__;
+
+if (php_sapi_name() === 'cli' && $isDirectInvocation) {
     $action = $argv[1] ?? 'help';
 
     $manager = new MigrationManager();
@@ -402,7 +404,7 @@ if (php_sapi_name() === 'cli') {
             echo "  php migration.php create <name>   Создать новую миграцию\n";
             break;
     }
-} else {
+} elseif (php_sapi_name() !== 'cli' && basename((string)($_SERVER['SCRIPT_NAME'] ?? '')) === basename(__FILE__)) {
     header('HTTP/1.1 403 Forbidden');
     header('Content-Type: text/plain; charset=utf-8');
     echo "403 Forbidden: доступ только из командной строки\n";
