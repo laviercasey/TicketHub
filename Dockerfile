@@ -45,6 +45,6 @@ RUN cp include/th-config.sample.php include/th-config.php \
 ENTRYPOINT ["/var/www/html/docker-entrypoint.sh"]
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD curl -sf http://localhost/healthz || exit 1
+    CMD curl -sf http://localhost/healthz.php || exit 1
 
 EXPOSE 80

@@ -120,11 +120,10 @@ jobs:
             docker compose down
             docker compose up -d
 
-            HEALTHZ_URL="http://localhost/healthz"
             DEADLINE=$(( $(date +%s) + 90 ))
             HEALTHY=0
             while [ "$(date +%s)" -lt "$DEADLINE" ]; do
-              if curl -sf "$HEALTHZ_URL" | grep -q '"status":"ok"'; then
+              if docker compose exec -T web curl -sf http://localhost/healthz.php 2>/dev/null | grep -q '"status":"ok"'; then
                 HEALTHY=1
                 break
               fi
@@ -153,7 +152,7 @@ jobs:
             docker compose up -d
 
             sleep 30
-            if curl -sf "$HEALTHZ_URL" | grep -q '"status":"ok"'; then
+            if docker compose exec -T web curl -sf http://localhost/healthz.php 2>/dev/null | grep -q '"status":"ok"'; then
               echo "rollback to $PREV_SHA successful — staging restored"
               exit 1
             fi

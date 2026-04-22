@@ -22,7 +22,7 @@ services:
       - APP_ENV=${APP_ENV:-local}
       - APP_DEBUG=${APP_DEBUG:-1}
     healthcheck:
-      test: ["CMD", "curl", "-sf", "http://localhost/healthz"]
+      test: ["CMD", "curl", "-sf", "http://localhost/healthz.php"]
       interval: 30s
       timeout: 5s
       retries: 3
