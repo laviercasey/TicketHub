@@ -127,22 +127,28 @@ if (!defined('APP_VERSION')) {
 }
 
 if (!function_exists('db_query')) {
-    function db_query(string $sql, string $database = '', mixed $conn = ''): mixed
+    function db_query(mixed $sql, mixed $database = '', mixed $conn = ''): mixed
     {
         global $__db;
         $link = $conn ? $conn : $__db;
         if ($database) {
-            mysqli_select_db($link, $database);
+            mysqli_select_db($link, (string)$database);
         }
-        return @mysqli_query($link, $sql);
+        return @mysqli_query($link, (string)$sql);
     }
 }
 
 if (!function_exists('db_input')) {
-    function db_input(string $value): string
+    function db_input(mixed $value): string
     {
         global $__db;
-        return "'" . mysqli_real_escape_string($__db, $value) . "'";
+        if ($value === null) {
+            return 'NULL';
+        }
+        if (is_bool($value)) {
+            return $value ? '1' : '0';
+        }
+        return "'" . mysqli_real_escape_string($__db, (string)$value) . "'";
     }
 }
 
@@ -156,10 +162,10 @@ if (!function_exists('db_fetch_array')) {
 }
 
 if (!function_exists('db_real_escape')) {
-    function db_real_escape(string $value): string
+    function db_real_escape(mixed $value): string
     {
         global $__db;
-        return mysqli_real_escape_string($__db, $value);
+        return mysqli_real_escape_string($__db, (string)($value ?? ''));
     }
 }
 
