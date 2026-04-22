@@ -39,10 +39,52 @@ jobs:
             ghcr.io/laviercasey/tickethub:latest
             ghcr.io/laviercasey/tickethub:${{ steps.meta.outputs.sha_short }}
 
+  backup:
+    name: Pre-deploy DB Backup
+    runs-on: ubuntu-latest
+    needs: ci
+    steps:
+      - name: Create backup on VPS
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            set -euo pipefail
+            BACKUP_DIR=/opt/backups/tickethub
+            mkdir -p "$BACKUP_DIR"
+            TIMESTAMP=$(date -u +%Y%m%dT%H%M%SZ)
+            SHA_SHORT=$(echo "${{ github.sha }}" | cut -c1-7)
+            BACKUP_FILE="$BACKUP_DIR/pre-deploy-$TIMESTAMP-$SHA_SHORT.sql.gz"
+
+            cd /opt/apps/tickethub
+
+            set -a; . ./.env; set +a
+
+            docker compose exec -T -e MYSQL_PWD="$MYSQL_ROOT_PASSWORD" db mysqldump \
+              -u root \
+              --single-transaction --routines --triggers \
+              --set-gtid-purged=OFF \
+              "${MYSQL_DATABASE:-tickethub}" \
+              | gzip > "$BACKUP_FILE"
+
+            SIZE=$(stat -c%s "$BACKUP_FILE")
+            if [ "$SIZE" -lt 1048576 ]; then
+              echo "ERROR: backup suspiciously small: $SIZE bytes"
+              exit 1
+            fi
+
+            find "$BACKUP_DIR" -name '*.sql.gz' -mtime +30 -delete
+
+            echo "backup ok: $BACKUP_FILE ($(du -h "$BACKUP_FILE" | cut -f1))"
+
+            echo "${{ github.sha }}" > /opt/apps/tickethub/.last-deploying-sha
+
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    needs: build-push
+    needs: [build-push, backup]
     environment: production
     steps:
       - uses: actions/checkout@v4
@@ -54,23 +96,68 @@ jobs:
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           source: docker-compose.prod.yml
           target: /opt/apps/tickethub/
-      - name: Restart stack
+      - name: Deploy + health-gate + auto-rollback
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
+            set -euo pipefail
             cd /opt/apps/tickethub
             mv -f docker-compose.prod.yml docker-compose.yml
-            docker pull ghcr.io/laviercasey/tickethub:latest
+
+            PREV_SHA=$(cat .last-good-sha 2>/dev/null || echo "")
+            NEW_SHA=$(echo "${{ github.sha }}" | cut -c1-7)
+
+            if grep -q '^IMAGE_TAG=' .env; then
+              sed -i "s/^IMAGE_TAG=.*/IMAGE_TAG=$NEW_SHA/" .env
+            else
+              echo "IMAGE_TAG=$NEW_SHA" >> .env
+            fi
+
+            docker pull ghcr.io/laviercasey/tickethub:"$NEW_SHA"
             docker compose down
             docker compose up -d
-            sleep 15
-            if ! docker compose ps web | grep -q "healthy"; then
-              echo "Health check failed!"
-              docker compose logs --tail=50 db
-              docker compose logs --tail=50 web
+
+            HEALTHZ_URL="http://localhost/healthz"
+            DEADLINE=$(( $(date +%s) + 90 ))
+            HEALTHY=0
+            while [ "$(date +%s)" -lt "$DEADLINE" ]; do
+              if curl -sf "$HEALTHZ_URL" | grep -q '"status":"ok"'; then
+                HEALTHY=1
+                break
+              fi
+              sleep 5
+            done
+
+            if [ "$HEALTHY" -eq 1 ]; then
+              echo "deploy healthy, marking $NEW_SHA as last-good"
+              echo "$NEW_SHA" > .last-good-sha
+              docker image prune -f
+              exit 0
+            fi
+
+            echo "ERROR: deploy failed health-gate. Rolling back to $PREV_SHA..."
+            docker compose logs --tail=100 web db
+
+            if [ -z "$PREV_SHA" ]; then
+              echo "FATAL: no .last-good-sha found — rollback impossible on first deploy."
+              echo "Manual intervention required: restore from backup in /opt/backups/tickethub/"
+              exit 2
+            fi
+
+            sed -i "s/^IMAGE_TAG=.*/IMAGE_TAG=$PREV_SHA/" .env
+            docker pull "ghcr.io/laviercasey/tickethub:$PREV_SHA"
+            docker compose down
+            docker compose up -d
+
+            sleep 30
+            if curl -sf "$HEALTHZ_URL" | grep -q '"status":"ok"'; then
+              echo "rollback to $PREV_SHA successful — staging restored"
               exit 1
             fi
-            docker image prune -f
+
+            echo "FATAL: rollback failed too. Manual intervention required."
+            echo "Backup available at /opt/backups/tickethub/"
+            exit 2

@@ -10,8 +10,6 @@ if(!$thisuser or !$thisuser->isadmin()){
 
 if(defined('THIS_VERSION') && strcasecmp($cfg->getVersion(),THIS_VERSION)) {
     $sysnotice=sprintf('Версия скрипта %s, а версия базы данных %s.',THIS_VERSION,$cfg->getVersion());
-    if(file_exists('../setup/'))
-        $sysnotice.=' Возможно, причина в незавершённом <a href="../setup/upgrade.php">обновлении</a>.';
     $errors['err']=$sysnotice;
 }elseif(!$cfg->isHelpDeskOffline()) {
 

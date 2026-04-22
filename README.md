@@ -116,24 +116,57 @@ cd tickethub
 cp .env.example .env
 ```
 
-Задайте пароли в `.env`:
+Задайте значения в `.env` (обязательные поля):
 
 ```env
-MYSQL_ROOT_PASSWORD=ваш_root_пароль
-MYSQL_PASSWORD=ваш_пароль_бд
+MYSQL_ROOT_PASSWORD=<openssl rand -base64 32>
+MYSQL_PASSWORD=<openssl rand -base64 32>
 DB_HOST=db
 DB_NAME=tickethub
 DB_USER=tickethub
-DB_PASS=ваш_пароль_бд
-SECRET_SALT=случайный_32_символьный_hex
-ADMIN_EMAIL=admin@yourdomain.com
+DB_PASS=<то же что MYSQL_PASSWORD>
+SECRET_SALT=<openssl rand -hex 32>
+```
+
+Опционально — для автоматического создания первого администратора при запуске:
+
+```env
+ADMIN_USERNAME=admin
+FIRST_ADMIN_EMAIL=admin@yourdomain.com
+ADMIN_PASSWORD_HASH=<php -r "echo password_hash('ВашПароль', PASSWORD_DEFAULT);">
 ```
 
 ```bash
 docker compose up -d --build
 ```
 
-Откройте **http://localhost:8080** в браузере и перейдите в `/setup/` для первоначальной настройки.
+Подождите ~45 секунд и проверьте готовность:
+
+```bash
+curl -sf http://localhost:8080/healthz
+```
+
+Ожидаемый ответ при успешном запуске: `{"status":"ok","version":"1.0"}`.
+
+Если `ADMIN_PASSWORD_HASH` не был задан в `.env`, создайте первого администратора вручную:
+
+```bash
+docker compose exec web php bin/first-admin.php
+```
+
+Войдите через браузер: **http://localhost:8080/scp/login.php**
+
+Подробные инструкции по деплою на VPS, обновлению, откату и восстановлению из бэкапа: [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
+
+### Обновление
+
+```bash
+git pull
+docker compose build
+docker compose up -d
+```
+
+Bootstrap автоматически применит все новые миграции. Healthcheck должен стать зелёным в течение ~45 секунд.
 
 <details>
 <summary>Сервисы и порты</summary>
@@ -148,17 +181,20 @@ docker compose up -d --build
 </details>
 
 <details>
-<summary>Локальная разработка (без Docker)</summary>
+<summary>Первичный запуск в production (VPS)</summary>
 
 <br>
 
-Требования: PHP 8.4+, MySQL 8.0+, Apache с mod_rewrite.
+Перед первым `push` в `main` выполните на VPS один раз:
 
-1. Склонируйте репозиторий
-2. Создайте базу данных MySQL
-3. Скопируйте `include/th-config.sample.php` → `include/th-config.php`
-4. Откройте `/setup/` в браузере - мастер создаст `.env` с настройками БД
-5. Установите зависимости: `composer install`
+```bash
+sudo mkdir -p /opt/apps/tickethub /opt/backups/tickethub
+sudo chown $USER:$USER /opt/apps/tickethub /opt/backups/tickethub
+```
+
+Создайте `/opt/apps/tickethub/.env` с production-значениями (см. [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) §1.3).
+
+После первого успешного деплоя файл `.last-good-sha` создаётся автоматически — он используется для автоматического отката при сбое.
 
 </details>
 
@@ -177,8 +213,12 @@ docker compose up -d --build
 | `DB_NAME` | Имя БД для PHP | `tickethub` |
 | `DB_USER` | Пользователь БД для PHP | `tickethub` |
 | `DB_PASS` | Пароль БД для PHP | - |
-| `SECRET_SALT` | Ключ шифрования (hex 32 символа) | - |
-| `ADMIN_EMAIL` | Email администратора | `admin@localhost` |
+| `SECRET_SALT` | Ключ шифрования (32+ символа) | - |
+| `ADMIN_EMAIL` | Email для системных уведомлений | `admin@localhost` |
+| `ADMIN_USERNAME` | Логин первого администратора (seed при первом запуске) | - |
+| `FIRST_ADMIN_EMAIL` | Email первого администратора (seed при первом запуске) | - |
+| `ADMIN_PASSWORD_HASH` | bcrypt-хеш пароля первого администратора (не plaintext) | - |
+| `IMAGE_TAG` | Тег образа для деплоя и отката | `latest` |
 
 </details>
 
@@ -376,15 +416,24 @@ tickethub/
 ├── tests/                        # PHPUnit-тесты
 │   ├── Unit/                     # Юнит-тесты
 │   └── Integration/              # Интеграционные тесты (20+)
-├── setup/                        # Мастер установки и миграции
-│   └── install/migrations/       # SQL-миграции
+├── bin/                          # CLI-скрипты
+│   ├── db-bootstrap.php          # Идемпотентный bootstrap БД (запускается entrypoint)
+│   ├── first-admin.php           # Создание первого администратора (интерактивно / флаги)
+│   └── db-seed.php               # Применение именованных seed-наборов
+├── db/seeds/                     # Seed-данные (только для dev/staging)
+│   └── dev_demo_data.php         # Демо-данные
+├── setup/                        # Миграции и утилиты установки
+│   └── install/migrations/       # PHP-миграции (идемпотентные)
+├── healthz.php                   # Healthcheck endpoint (/healthz)
 ├── docker-compose.yml            # Docker Compose
+├── docker-entrypoint.sh          # Entrypoint: валидация env + bootstrap + Apache
 ├── Dockerfile                    # Образ PHP 8.4 + Apache
 ├── composer.json                 # PHP-зависимости
 ├── phpunit.xml                   # Конфигурация тестов
 ├── tailwind.config.js            # Настройка Tailwind CSS
 ├── docs/                         # Документация
 │   ├── API.md                    # Документация REST API
+│   ├── DEPLOYMENT.md             # Руководство по деплою, откату и восстановлению
 │   ├── CONTRIBUTING.md           # Руководство для разработчиков
 │   └── TicketHub_API_v1.postman_collection.json
 ├── .env.example                  # Шаблон переменных окружения

@@ -116,24 +116,57 @@ cd tickethub
 cp .env.example .env
 ```
 
-Set passwords in `.env`:
+Set the required values in `.env`:
 
 ```env
-MYSQL_ROOT_PASSWORD=your_root_password
-MYSQL_PASSWORD=your_db_password
+MYSQL_ROOT_PASSWORD=<openssl rand -base64 32>
+MYSQL_PASSWORD=<openssl rand -base64 32>
 DB_HOST=db
 DB_NAME=tickethub
 DB_USER=tickethub
-DB_PASS=your_db_password
-SECRET_SALT=random_32_char_hex_string
-ADMIN_EMAIL=admin@yourdomain.com
+DB_PASS=<same as MYSQL_PASSWORD>
+SECRET_SALT=<openssl rand -hex 32>
+```
+
+Optionally, seed the first admin automatically on startup:
+
+```env
+ADMIN_USERNAME=admin
+FIRST_ADMIN_EMAIL=admin@yourdomain.com
+ADMIN_PASSWORD_HASH=<php -r "echo password_hash('YourPassword', PASSWORD_DEFAULT);">
 ```
 
 ```bash
 docker compose up -d --build
 ```
 
-Open **http://localhost:8080** in your browser and navigate to `/setup/` for initial configuration.
+Wait ~45 seconds, then check readiness:
+
+```bash
+curl -sf http://localhost:8080/healthz
+```
+
+Expected response on success: `{"status":"ok","version":"1.0"}`.
+
+If `ADMIN_PASSWORD_HASH` was not set in `.env`, create the first admin interactively:
+
+```bash
+docker compose exec web php bin/first-admin.php
+```
+
+Log in via browser: **http://localhost:8080/scp/login.php**
+
+For full deployment instructions (VPS, upgrades, rollback, backup restore): [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
+
+### Upgrading
+
+```bash
+git pull
+docker compose build
+docker compose up -d
+```
+
+Bootstrap applies all pending migrations automatically. The healthcheck should turn green within ~45 seconds.
 
 <details>
 <summary>Services & Ports</summary>
@@ -148,17 +181,20 @@ Open **http://localhost:8080** in your browser and navigate to `/setup/` for ini
 </details>
 
 <details>
-<summary>Local development (without Docker)</summary>
+<summary>First-time production deploy (VPS)</summary>
 
 <br>
 
-Requirements: PHP 8.4+, MySQL 8.0+, Apache with mod_rewrite.
+Before the first `push` to `main`, run once on the VPS:
 
-1. Clone the repository
-2. Create a MySQL database
-3. Copy `include/th-config.sample.php` → `include/th-config.php`
-4. Open `/setup/` in your browser - the wizard will create `.env` with DB settings
-5. Install dependencies: `composer install`
+```bash
+sudo mkdir -p /opt/apps/tickethub /opt/backups/tickethub
+sudo chown $USER:$USER /opt/apps/tickethub /opt/backups/tickethub
+```
+
+Create `/opt/apps/tickethub/.env` with production values (see [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md) §1.3).
+
+After the first successful deploy, `.last-good-sha` is created automatically and is used by the auto-rollback mechanism on failure.
 
 </details>
 
@@ -177,8 +213,12 @@ Requirements: PHP 8.4+, MySQL 8.0+, Apache with mod_rewrite.
 | `DB_NAME` | DB name for PHP | `tickethub` |
 | `DB_USER` | DB user for PHP | `tickethub` |
 | `DB_PASS` | DB password for PHP | - |
-| `SECRET_SALT` | Encryption key (32 char hex) | - |
-| `ADMIN_EMAIL` | Admin email | `admin@localhost` |
+| `SECRET_SALT` | Encryption key (32+ chars) | - |
+| `ADMIN_EMAIL` | Email for system alerts | `admin@localhost` |
+| `ADMIN_USERNAME` | First admin username (seed on fresh install) | - |
+| `FIRST_ADMIN_EMAIL` | First admin email (seed on fresh install) | - |
+| `ADMIN_PASSWORD_HASH` | bcrypt hash of first admin password (not plaintext) | - |
+| `IMAGE_TAG` | Image tag for versioned deploy and rollback | `latest` |
 
 </details>
 
@@ -376,15 +416,24 @@ tickethub/
 ├── tests/                        # PHPUnit tests
 │   ├── Unit/                     # Unit tests
 │   └── Integration/              # Integration tests (20+)
-├── setup/                        # Installation wizard & migrations
-│   └── install/migrations/       # SQL migrations
+├── bin/                          # CLI scripts
+│   ├── db-bootstrap.php          # Idempotent DB bootstrap (run by entrypoint)
+│   ├── first-admin.php           # Create first admin (interactive / flags)
+│   └── db-seed.php               # Apply named seed sets
+├── db/seeds/                     # Seed data (dev/staging only)
+│   └── dev_demo_data.php         # Demo data
+├── setup/                        # Migrations and install utilities
+│   └── install/migrations/       # PHP migrations (idempotent)
+├── healthz.php                   # Healthcheck endpoint (/healthz)
 ├── docker-compose.yml            # Docker Compose
+├── docker-entrypoint.sh          # Entrypoint: env validation + bootstrap + Apache
 ├── Dockerfile                    # PHP 8.4 + Apache image
 ├── composer.json                 # PHP dependencies
 ├── phpunit.xml                   # Test configuration
 ├── tailwind.config.js            # Tailwind CSS config
 ├── docs/                         # Documentation
 │   ├── API.md                    # REST API documentation
+│   ├── DEPLOYMENT.md             # Deployment, rollback and restore guide
 │   ├── CONTRIBUTING.md           # Developer guide
 │   └── TicketHub_API_v1.postman_collection.json
 ├── .env.example                  # Environment variables template
