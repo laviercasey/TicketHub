@@ -81,14 +81,6 @@
         return $cached;
     }
 
-    if (php_sapi_name() !== 'cli' && !th_is_installed()) {
-        http_response_code(503);
-        header('Content-Type: text/plain; charset=utf-8');
-        header('Cache-Control: no-store');
-        echo "TicketHub: database not initialized. Run bin/db-bootstrap.php.\n";
-        exit;
-    }
-
     if(!defined('PATH_SEPARATOR')){
         if(strpos($_ENV['OS'] ?? '','Win')!==false || !strcasecmp(substr(PHP_OS, 0, 3),'WIN'))
             define('PATH_SEPARATOR', ';' );
@@ -192,6 +184,12 @@
     $ferror=null;
     if (!db_connect(DBHOST,DBUSER,DBPASS) || !db_select_database(DBNAME)) {
         $ferror='Невозможно подключиться к базе данных';
+    }elseif (php_sapi_name() !== 'cli' && !th_is_installed()) {
+        http_response_code(503);
+        header('Content-Type: text/plain; charset=utf-8');
+        header('Cache-Control: no-store');
+        echo "TicketHub: database not initialized. Run bin/db-bootstrap.php.\n";
+        exit;
     }elseif(!($cfg=Sys::getConfig())){
         $ferror='Невозможно загрузить конфигурацию из БД. Обратитесь в техподдержку.';
     }
