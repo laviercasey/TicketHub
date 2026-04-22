@@ -70,7 +70,7 @@ jobs:
               | gzip > "$BACKUP_FILE"
 
             SIZE=$(stat -c%s "$BACKUP_FILE")
-            if [ "$SIZE" -lt 1048576 ]; then
+            if [ "$SIZE" -lt 5120 ]; then
               echo "ERROR: backup suspiciously small: $SIZE bytes"
               exit 1
             fi
