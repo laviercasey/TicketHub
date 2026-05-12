@@ -13,6 +13,22 @@ parameters:
         - api/v1/controllers/api.php
         - include/staff/preference.inc.php
         - include/staff/viewticket.inc.php
+        - include/staff/banlist.inc.php
+        - include/staff/dept.inc.php
+        - include/staff/depts.inc.php
+        - include/staff/email.inc.php
+        - include/staff/emails.inc.php
+        - include/staff/filters.inc.php
+        - include/staff/group.inc.php
+        - include/staff/groups.inc.php
+        - include/staff/header.inc.php
+        - include/staff/helptopics.inc.php
+        - include/staff/staff.inc.php
+        - include/staff/staffmembers.inc.php
+        - include/staff/syslogs.inc.php
+        - include/staff/templates.inc.php
+        - include/staff/tickets.inc.php
+        - include/staff/topic.inc.php
     bootstrapFiles:
         - phpstan-bootstrap.php
     reportUnmatchedIgnoredErrors: false
