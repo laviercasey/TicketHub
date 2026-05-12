@@ -24,7 +24,7 @@ class ApiMiddleware {
             ApiSecurity::applySecurityHeaders();
         }
 
-        $this->handleCors();
+        self::handleCors();
 
         $client_ip = ApiSecurity::getClientIp();
         if (ApiSecurity::isBlacklistedIp($client_ip)) {
@@ -66,7 +66,7 @@ class ApiMiddleware {
         return $this->token;
     }
 
-    function handleCors() {
+    static function handleCors() {
         $allowed_origins = array();
         if (defined('API_ALLOWED_ORIGINS')) {
             $allowed_origins = array_map('trim', explode(',', API_ALLOWED_ORIGINS));

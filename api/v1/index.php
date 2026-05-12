@@ -13,6 +13,8 @@ require_once(INCLUDE_DIR . 'class.apicontroller.php');
 require_once(INCLUDE_DIR . 'class.apimiddleware.php');
 require_once(INCLUDE_DIR . 'class.api.php');
 
+ApiMiddleware::handleCors();
+
 global $cfg;
 if (!$cfg->get('api_enabled', 1)) {
     ApiResponse::serviceUnavailable('API is currently disabled')->send();

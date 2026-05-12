@@ -775,7 +775,6 @@ class Ticket{
                     $sql='SELECT message_alert_subj,message_alert_body FROM '.EMAIL_TEMPLATE_TABLE.
                          ' WHERE cfg_id='.db_input($cfg->getId()).' AND tpl_id='.db_input($tplId);
 
-                    $resp=db_query($sql);
                     if(($resp=db_query($sql)) && db_num_rows($resp) && list($subj,$body)=db_fetch_row($resp)){
 
                         $body=$this->replaceTemplateVars($body);

@@ -276,7 +276,7 @@ $qfrom.=" LEFT JOIN (SELECT notes.ticket_id AS latnoteticketid, staffs.staff_id 
 			ORDER BY notes.created DESC) lastnotestaff ON lastnotestaff.latnoteticketid = ticket.ticket_id  ";
 
 $qselect.=' ,myth_staff.assignfname, myth_staff.assignlname';
-$qfrom.=' LEFT JOIN (SELECT staff_id, firstname as assignfname, lastname AS assignlname FROM th_staff) myth_staff ON myth_staff.staff_id = ticket.staff_id ';
+$qfrom.=' LEFT JOIN (SELECT staff_id, firstname as assignfname, lastname AS assignlname FROM '.STAFF_TABLE.') myth_staff ON myth_staff.staff_id = ticket.staff_id ';
 
 $query="$qselect $qfrom $qwhere $qgroup ORDER BY $order_by $order LIMIT ".$pageNav->getStart().",".$pageNav->getLimit();
 $tickets_res = db_query($query);
