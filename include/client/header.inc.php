@@ -30,7 +30,7 @@ header('Referrer-Policy: strict-origin-when-cross-origin');
     <link rel="stylesheet" href="./styles/tickethub.css?v=<?=filemtime(__DIR__.'/../../styles/tickethub.css')?>">
 
     <!-- Lucide Icons (pinned to 0.263.1 for createIcons API) -->
-    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js" integrity="sha384-cmdVzp/LNswnLRGK6j6+cMUsn7jTxO+fX9W5jw6A+4iaSvhkiSdj8/B9nJyBgtKQ" crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-50 font-body text-gray-900 antialiased" x-data="{ mobileMenu: false }">
 

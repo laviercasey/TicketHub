@@ -14,8 +14,8 @@
 </div>
 <?php } ?>
 
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js" integrity="sha384-5JqMv4L/Xa0hfvtF06qboNdhvuYXUku9ZrhZh3bSk8VXF0A/RuSLHpLsSV9Zqhl6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ru.js" integrity="sha384-hiYbFn9RFta0VOSz0tWehgGvRCg4pOVM1gcoKY0Lv4d4c/4GAFPeWtxmIeRxEZ7C" crossorigin="anonymous"></script>
 
 <script src="js/lib/Sortable.min.js"></script>
 <script src="js/lib/moment.min.js"></script>
@@ -26,7 +26,7 @@
 <script src="js/task-kanban.js"></script>
 <script src="js/task-calendar.js"></script>
 
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" integrity="sha384-l8f0VcPi/M1iHPv8egOnY/15TDwqgbOR1anMIJWvU6nLRgZVLTLSaNqi/TOoT5Fh" crossorigin="anonymous"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

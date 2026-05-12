@@ -299,7 +299,7 @@ $statusClasses = array('open' => 'badge-secondary', 'in_progress' => 'badge-prim
     <?php } ?>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js" integrity="sha384-HZZ/fukV+9G8gwTNjN7zQDG0Sp7MsZy5DDN6VfY3Be7V9dvQpEpR2jF2HlyFUUjU" crossorigin="anonymous"></script>
 <script>
 $(document).ready(function(){
     var csrfToken = '<?php echo Misc::generateCSRFToken(); ?>';

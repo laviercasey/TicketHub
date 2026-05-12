@@ -13,6 +13,7 @@ vendor/
 *.log
 *.sql
 !setup/inc/*.sql
+!db/audits/*.sql
 
 *.bak
 *.bak.*
@@ -28,6 +29,9 @@ vendor/
 *.swp
 *.swo
 *~
+
+.orchestra/
+
 .project
 .settings/
 *.sublime-project
