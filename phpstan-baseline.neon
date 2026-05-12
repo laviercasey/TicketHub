@@ -1,0 +1,2076 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: api/api.inc.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between mixed and false will always evaluate to false\\.$#"
+			count: 1
+			path: api/pipe.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 7
+			path: api/pipe.php
+
+		-
+			message: "#^Variable \\$emailId might not be defined\\.$#"
+			count: 2
+			path: api/pipe.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 8
+			path: api/security-check.php
+
+		-
+			message: "#^Static method ApiResponse\\:\\:error\\(\\) invoked with 1 parameter, 2\\-4 required\\.$#"
+			count: 1
+			path: api/v1/controllers/kb.php
+
+		-
+			message: "#^Variable \\$row might not be defined\\.$#"
+			count: 7
+			path: api/v1/controllers/kb.php
+
+		-
+			message: "#^Static method ApiResponse\\:\\:error\\(\\) invoked with 1 parameter, 2\\-4 required\\.$#"
+			count: 5
+			path: api/v1/controllers/tasks.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 7
+			path: api/v1/controllers/tickets.php
+
+		-
+			message: "#^Right side of && is always false\\.$#"
+			count: 1
+			path: api/v1/index.php
+
+		-
+			message: "#^Call to method runMigrations\\(\\) on an unknown class MigrationManager\\.$#"
+			count: 1
+			path: bin/db-bootstrap.php
+
+		-
+			message: "#^Instantiated class MigrationManager not found\\.$#"
+			count: 1
+			path: bin/db-bootstrap.php
+
+		-
+			message: "#^Variable \\$argv might not be defined\\.$#"
+			count: 1
+			path: bin/db-seed.php
+
+		-
+			message: "#^Variable \\$argv might not be defined\\.$#"
+			count: 1
+			path: bin/first-admin.php
+
+		-
+			message: "#^Static call to instance method Staff\\:\\:lookup\\(\\)\\.$#"
+			count: 1
+			path: include/class.apicontroller.php
+
+		-
+			message: "#^Ternary operator condition is always false\\.$#"
+			count: 2
+			path: include/class.apicontroller.php
+
+		-
+			message: "#^Call to an undefined static method ApiResponse\\:\\:tooManyRequests\\(\\)\\.$#"
+			count: 1
+			path: include/class.apimiddleware.php
+
+		-
+			message: "#^Static call to instance method ApiMiddleware\\:\\:logAfterResponse\\(\\)\\.$#"
+			count: 1
+			path: include/class.apimiddleware.php
+
+		-
+			message: "#^Right side of && is always false\\.$#"
+			count: 1
+			path: include/class.apiresponse.php
+
+		-
+			message: "#^Access to an undefined property ApiToken\\:\\:\\$token_raw\\.$#"
+			count: 1
+			path: include/class.apitoken.php
+
+		-
+			message: "#^Binary operation \"\\-\" between 32 and string results in an error\\.$#"
+			count: 1
+			path: include/class.apitoken.php
+
+		-
+			message: "#^Constructor of class Captcha has an unused parameter \\$bg\\.$#"
+			count: 1
+			path: include/class.captcha.php
+
+		-
+			message: "#^Method Client\\:\\:__construct\\(\\) with return type void returns mixed but should not return anything\\.$#"
+			count: 1
+			path: include/class.client.php
+
+		-
+			message: "#^Class Cron referenced with incorrect case\\: cron\\.$#"
+			count: 1
+			path: include/class.cron.php
+
+		-
+			message: "#^Variable \\$name might not be defined\\.$#"
+			count: 1
+			path: include/class.dept.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.document.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.email.php
+
+		-
+			message: "#^Variable \\$id might not be defined\\.$#"
+			count: 1
+			path: include/class.email.php
+
+		-
+			message: "#^Variable \\$tstring might not be defined\\.$#"
+			count: 2
+			path: include/class.format.php
+
+		-
+			message: "#^Access to an undefined property MailFetcher\\:\\:\\$serverstr\\.$#"
+			count: 2
+			path: include/class.mailfetch.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: include/class.mailfetch.php
+
+		-
+			message: "#^Static call to instance method Mail_Parse\\:\\:parsePriority\\(\\)\\.$#"
+			count: 1
+			path: include/class.mailfetch.php
+
+		-
+			message: "#^Variable \\$prefix might not be defined\\.$#"
+			count: 2
+			path: include/class.mailfetch.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 2
+			path: include/class.mailparse.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between string and false will always evaluate to false\\.$#"
+			count: 1
+			path: include/class.misc.php
+
+		-
+			message: "#^Access to an undefined property Template\\:\\:\\$cfgId\\.$#"
+			count: 2
+			path: include/class.msgtpl.php
+
+		-
+			message: "#^Variable \\$template might not be defined\\.$#"
+			count: 1
+			path: include/class.msgtpl.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 1
+			path: include/class.priorityuser.php
+
+		-
+			message: "#^Function db_input invoked with 2 parameters, 1 required\\.$#"
+			count: 2
+			path: include/class.staff.php
+
+		-
+			message: "#^Method Staff\\:\\:__construct\\(\\) with return type void returns mixed but should not return anything\\.$#"
+			count: 1
+			path: include/class.staff.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.sys.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 2
+			path: include/class.task.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: include/class.task.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskattachment.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskautomation.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskboard.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskcomment.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskcustomfield.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 2
+			path: include/class.taskfilter.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskfilter.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskpermission.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.taskrecurring.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.tasktag.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.tasktemplate.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/class.tasktimelog.php
+
+		-
+			message: "#^Class Banlist referenced with incorrect case\\: BanList\\.$#"
+			count: 1
+			path: include/class.ticket.php
+
+		-
+			message: "#^Constructor of class Ticket has an unused parameter \\$exid\\.$#"
+			count: 1
+			path: include/class.ticket.php
+
+		-
+			message: "#^Function db_input invoked with 2 parameters, 1 required\\.$#"
+			count: 2
+			path: include/class.ticket.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 7
+			path: include/class.ticket.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 5
+			path: include/class.ticket.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 2
+			path: include/class.ticket.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: include/class.ticket.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 6
+			path: include/class.ticket.php
+
+		-
+			message: "#^Variable \\$attachstr might not be defined\\.$#"
+			count: 2
+			path: include/class.ticket.php
+
+		-
+			message: "#^Variable \\$dept might not be defined\\.$#"
+			count: 3
+			path: include/class.ticket.php
+
+		-
+			message: "#^Variable \\$id might not be defined\\.$#"
+			count: 3
+			path: include/class.ticket.php
+
+		-
+			message: "#^Variable \\$num might not be defined\\.$#"
+			count: 1
+			path: include/class.ticket.php
+
+		-
+			message: "#^Variable \\$topicDesc might not be defined\\.$#"
+			count: 1
+			path: include/class.ticket.php
+
+		-
+			message: "#^Access to an undefined property Topic\\:\\:\\$active\\.$#"
+			count: 2
+			path: include/class.topic.php
+
+		-
+			message: "#^Binary operation \"\\-\" between int\\<1, max\\> and string results in an error\\.$#"
+			count: 1
+			path: include/class.usersession.php
+
+		-
+			message: "#^Regex pattern is invalid\\: Unknown modifier '\\[' in pattern\\: \\#\\^\\(https\\?\\)\\\\\\:\\\\/\\\\/\\(\\[a\\-z0\\-9\\+\\!\\*\\(\\),;\\?&\\=\\$_\\.\\-\\]\\+\\(\\\\\\:\\[a\\-z0\\-9\\+\\!\\*\\(\\),;\\?&\\=\\$_\\.\\-\\]\\+\\)\\?@\\)\\?\\[a\\-z0\\-9\\+\\$_\\-\\]\\+\\(\\\\\\.\\[a\\-z0\\-9\\+\\$_\\-\\]\\+\\)\\*\\(\\\\\\:\\[0\\-9\\]\\{2,5\\}\\)\\?\\(\\\\/\\(\\[a\\-z0\\-9\\+\\$_\\-\\]\\\\\\.\\?\\)\\+\\)\\*\\\\/\\?\\(\\\\\\?\\[a\\-z\\+&\\$_\\.\\-\\]\\[a\\-z0\\-9;\\:@/&%%\\=\\+\\$_\\.\\-\\]\\*\\)\\?\\(\\#\\[a\\-z_\\.\\-\\]\\[a\\-z0\\-9\\+\\$_\\.\\-\\]\\*\\)\\?\\$\\#i$#"
+			count: 1
+			path: include/class.validator.php
+
+		-
+			message: "#^Variable \\$ip in empty\\(\\) always exists and is not falsy\\.$#"
+			count: 1
+			path: include/class.validator.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/client/docs.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/client/header.inc.php
+
+		-
+			message: "#^Variable \\$thisclient might not be defined\\.$#"
+			count: 2
+			path: include/client/header.inc.php
+
+		-
+			message: "#^Variable \\$loginmsg might not be defined\\.$#"
+			count: 1
+			path: include/client/login.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/client/login.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 6
+			path: include/client/open.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 26
+			path: include/client/open.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/client/open.inc.php
+
+		-
+			message: "#^Variable \\$thisclient might not be defined\\.$#"
+			count: 4
+			path: include/client/open.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/client/open.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/client/thankyou.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/client/thankyou.inc.php
+
+		-
+			message: "#^Variable \\$ticket might not be defined\\.$#"
+			count: 1
+			path: include/client/thankyou.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/client/thankyou.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Variable \\$num might not be defined\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Variable \\$order might not be defined\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Variable \\$order_by might not be defined\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Variable \\$thisclient might not be defined\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/client/tickets.inc.php
+
+		-
+			message: "#^Variable \\$doc might not be defined\\.$#"
+			count: 1
+			path: include/client/viewdoc.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 3
+			path: include/client/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 6
+			path: include/client/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$id might not be defined\\.$#"
+			count: 1
+			path: include/client/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/client/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$respID might not be defined\\.$#"
+			count: 1
+			path: include/client/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$thisclient might not be defined\\.$#"
+			count: 1
+			path: include/client/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$ticket might not be defined\\.$#"
+			count: 1
+			path: include/client/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/handler.inventory.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: include/handler.kbase.php
+
+		-
+			message: "#^Variable \\$response might not be defined\\.$#"
+			count: 2
+			path: include/handler.kbase.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: include/handler.tickets.php
+
+		-
+			message: "#^Function db_input invoked with 2 parameters, 1 required\\.$#"
+			count: 1
+			path: include/mysql.php
+
+		-
+			message: "#^Function db_real_escape invoked with 2 parameters, 1 required\\.$#"
+			count: 1
+			path: include/mysql.php
+
+		-
+			message: "#^Result of function mysqli_free_result \\(void\\) is used\\.$#"
+			count: 1
+			path: include/mysql.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 2
+			path: include/staff/api-docs.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/api-docs.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/api-monitoring.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/api.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/api.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/api.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/api.inc.php
+
+		-
+			message: "#^If condition is always true\\.$#"
+			count: 2
+			path: include/staff/attachment.inc.php
+
+		-
+			message: "#^Variable \\$attwarn might not be defined\\.$#"
+			count: 1
+			path: include/staff/attachment.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/attachment.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 7
+			path: include/staff/attachment.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/attachment.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/banlist.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/banlist.inc.php
+
+		-
+			message: "#^Function db_real_escape invoked with 2 parameters, 1 required\\.$#"
+			count: 1
+			path: include/staff/banlist.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 2
+			path: include/staff/banlist.inc.php
+
+		-
+			message: "#^Variable \\$search might not be defined\\.$#"
+			count: 1
+			path: include/staff/banlist.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 2
+			path: include/staff/banlist.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 9
+			path: include/staff/changepasswd.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/changepasswd.inc.php
+
+		-
+			message: "#^Offset 'ispublic' on array\\{\\} in isset\\(\\) does not exist\\.$#"
+			count: 1
+			path: include/staff/dept.inc.php
+
+		-
+			message: "#^Offset 'message_auto…' on array\\{ispublic\\: 1, ticket_auto_response\\: 1\\} in isset\\(\\) does not exist\\.$#"
+			count: 1
+			path: include/staff/dept.inc.php
+
+		-
+			message: "#^Offset 'ticket_auto_response' on array\\{ispublic\\: 1\\} in isset\\(\\) does not exist\\.$#"
+			count: 1
+			path: include/staff/dept.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/dept.inc.php
+
+		-
+			message: "#^Variable \\$dept might not be defined\\.$#"
+			count: 1
+			path: include/staff/dept.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/dept.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/dept.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/depts.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/depts.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/depts.inc.php
+
+		-
+			message: "#^Variable \\$document might not be defined\\.$#"
+			count: 4
+			path: include/staff/document.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 11
+			path: include/staff/document.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/document.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/document.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/document.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Ternary operator condition is always false\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Variable \\$document might not be defined\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Variable \\$search might not be defined\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/documents.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 17
+			path: include/staff/editticket.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/editticket.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/editticket.inc.php
+
+		-
+			message: "#^Variable \\$ticket might not be defined\\.$#"
+			count: 1
+			path: include/staff/editticket.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/editticket.inc.php
+
+		-
+			message: "#^Variable \\$email might not be defined\\.$#"
+			count: 1
+			path: include/staff/email.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/email.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/email.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/emails.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/emails.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/emails.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Function db_real_escape invoked with 2 parameters, 1 required\\.$#"
+			count: 1
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 2
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Variable \\$order might not be defined\\.$#"
+			count: 1
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Variable \\$order_column might not be defined\\.$#"
+			count: 1
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Variable \\$qstr might not be defined\\.$#"
+			count: 4
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Variable \\$search might not be defined\\.$#"
+			count: 1
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 2
+			path: include/staff/filters.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/footer.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 2
+			path: include/staff/group.inc.php
+
+		-
+			message: "#^Variable \\$group might not be defined\\.$#"
+			count: 2
+			path: include/staff/group.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/group.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/groups.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/groups.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/header.inc.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 1
+			path: include/staff/header.inc.php
+
+		-
+			message: "#^Variable \\$sysnotice might not be defined\\.$#"
+			count: 1
+			path: include/staff/header.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/header.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/helptopics.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/helptopics.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Constant TICKET_TABLE_ARCHIVED not found\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Function db_real_escape invoked with 2 parameters, 1 required\\.$#"
+			count: 3
+			path: include/staff/index.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 3
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$flagtitle might not be defined\\.$#"
+			count: 3
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$num might not be defined\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$qwhere_assigns might not be defined\\.$#"
+			count: 2
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$qwhere_deps might not be defined\\.$#"
+			count: 2
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$results_type might not be defined\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$statusss might not be defined\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 18
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/index.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-catalog.inc.php
+
+		-
+			message: "#^Variable \\$tab might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-catalog.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-catalog.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/inventory-history.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/inventory-history.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-history.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 6
+			path: include/staff/inventory-item.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-item.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-item.inc.php
+
+		-
+			message: "#^Offset 'building'\\|'floor'\\|'room' on array\\{building\\: '\\#8e44ad', floor\\: '\\#2980b9', room\\: '\\#27ae60', storage\\: '\\#e67e22', rack\\: '\\#7f8c8d', other\\: '\\#95a5a6'\\} in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: include/staff/inventory-locations.inc.php
+
+		-
+			message: "#^Offset 'building'\\|'floor'\\|'room' on array\\{building\\: 'border\\-t\\-4 border…', floor\\: 'border\\-t\\-4 border…', room\\: 'border\\-t\\-4 border…'\\} in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: include/staff/inventory-locations.inc.php
+
+		-
+			message: "#^Offset 'building'\\|'floor'\\|'room' on array\\{building\\: 'text\\-purple\\-500', floor\\: 'text\\-blue\\-500', room\\: 'text\\-emerald\\-500'\\} in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: include/staff/inventory-locations.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-locations.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-locations.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-view.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory-view.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/inventory.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/inventory.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/inventory.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/login.tpl.php
+
+		-
+			message: "#^Constant TIMEZONE_TABLE not found\\.$#"
+			count: 1
+			path: include/staff/mypref.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 3
+			path: include/staff/mypref.inc.php
+
+		-
+			message: "#^Variable \\$rep might not be defined\\.$#"
+			count: 1
+			path: include/staff/mypref.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/mypref.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 10
+			path: include/staff/myprofile.inc.php
+
+		-
+			message: "#^Variable \\$rep might not be defined\\.$#"
+			count: 7
+			path: include/staff/myprofile.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/myprofile.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 3
+			path: include/staff/newticket.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 29
+			path: include/staff/newticket.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/newticket.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/newticket.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/newticket.inc.php
+
+		-
+			message: "#^Constant TIMEZONE_TABLE not found\\.$#"
+			count: 1
+			path: include/staff/preference.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 2
+			path: include/staff/preference.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 20
+			path: include/staff/preference.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/preference.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/preference.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$order might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$order_column might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$result_type might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$search might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$ticket might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$where might not be defined\\.$#"
+			count: 2
+			path: include/staff/premade.inc.php
+
+		-
+			message: "#^Variable \\$priorityuser might not be defined\\.$#"
+			count: 2
+			path: include/staff/priorityuser.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/priorityuser.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/priorityusers.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/priorityusers.inc.php
+
+		-
+			message: "#^Variable \\$answer might not be defined\\.$#"
+			count: 2
+			path: include/staff/reply.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 9
+			path: include/staff/reply.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/reply.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/reply.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/reply.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/smtp.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 9
+			path: include/staff/smtp.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/smtp.inc.php
+
+		-
+			message: "#^Variable \\$title might not be defined\\.$#"
+			count: 1
+			path: include/staff/smtp.inc.php
+
+		-
+			message: "#^Offset 'dept_id' does not exist on array\\{resetpasswd\\: 1, isactive\\: 1\\}\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Offset 'dept_id' on array\\{resetpasswd\\: 1, isactive\\: 1\\} in empty\\(\\) does not exist\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Offset 'isactive' on array\\{resetpasswd\\: 1\\} in isset\\(\\) does not exist\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Offset 'isvisible' on array\\{resetpasswd\\: 1, isactive\\: 1, dept_id\\: mixed\\} in isset\\(\\) does not exist\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Offset 'resetpasswd' on array\\{\\} in isset\\(\\) does not exist\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Variable \\$staff might not be defined\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/staff.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/staffmembers.inc.php
+
+		-
+			message: "#^Variable \\$id might not be defined\\.$#"
+			count: 1
+			path: include/staff/staffmembers.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/staffmembers.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/syslogs.inc.php
+
+		-
+			message: "#^Variable \\$num might not be defined\\.$#"
+			count: 1
+			path: include/staff/syslogs.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/syslogs.inc.php
+
+		-
+			message: "#^Variable \\$board might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-automation.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-automation.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-automation.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-templates.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-templates.inc.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
+			count: 1
+			path: include/staff/task-view.inc.php
+
+		-
+			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
+			count: 1
+			path: include/staff/task-view.inc.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: include/staff/task-view.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-view.inc.php
+
+		-
+			message: "#^Variable \\$task might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-view.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/task-view.inc.php
+
+		-
+			message: "#^Comparison operation \"\\>\" between int\\<1, max\\> and 0 is always true\\.$#"
+			count: 1
+			path: include/staff/task.inc.php
+
+		-
+			message: "#^Else branch is unreachable because ternary operator condition is always true\\.$#"
+			count: 1
+			path: include/staff/task.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/task.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 4
+			path: include/staff/task.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/task.inc.php
+
+		-
+			message: "#^Variable \\$task might not be defined\\.$#"
+			count: 1
+			path: include/staff/task.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/task.inc.php
+
+		-
+			message: "#^Variable \\$board might not be defined\\.$#"
+			count: 1
+			path: include/staff/taskboard.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 2
+			path: include/staff/taskboard.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/taskboard.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/taskboard.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/taskboards.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/taskboards.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks-calendar.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks-calendar.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks-dashboard.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks-dashboard.inc.php
+
+		-
+			message: "#^Offset 'tags' on non\\-empty\\-array in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: include/staff/tasks-kanban.inc.php
+
+		-
+			message: "#^Offset 0 on non\\-empty\\-array\\<array\\<int\\<0, max\\>, non\\-empty\\-array\\>\\> in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: include/staff/tasks-kanban.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks-kanban.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks-kanban.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/tasks.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/tasks.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/template.inc.php
+
+		-
+			message: "#^Variable \\$template might not be defined\\.$#"
+			count: 1
+			path: include/staff/template.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/template.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/templates.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: include/staff/templates.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 2
+			path: include/staff/templates.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/templates.inc.php
+
+		-
+			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Constant PAGE_LIMIT not found\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Constant TICKET_TABLE_ARCHIVED not found\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Function db_real_escape invoked with 2 parameters, 1 required\\.$#"
+			count: 3
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Left side of && is always false\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Result of && is always false\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 3
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$flagtitle might not be defined\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$num might not be defined\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$qwhere_assigns might not be defined\\.$#"
+			count: 2
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$qwhere_deps might not be defined\\.$#"
+			count: 2
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$stats might not be defined\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 19
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: include/staff/tickets.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: include/staff/topic.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: include/staff/topic.inc.php
+
+		-
+			message: "#^Variable \\$topic might not be defined\\.$#"
+			count: 1
+			path: include/staff/topic.inc.php
+
+		-
+			message: "#^Class Banlist referenced with incorrect case\\: BanList\\.$#"
+			count: 1
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 2
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$emailBanned might not be defined\\.$#"
+			count: 1
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 3
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$msgid might not be defined\\.$#"
+			count: 1
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 30
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$ticket might not be defined\\.$#"
+			count: 1
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 3
+			path: include/staff/viewticket.inc.php
+
+		-
+			message: "#^Class Banlist referenced with incorrect case\\: BanList\\.$#"
+			count: 2
+			path: scp/admin.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 4
+			path: scp/admin.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 4
+			path: scp/admin.php
+
+		-
+			message: "#^Offset 'err' does not exist on array\\{\\}\\.$#"
+			count: 2
+			path: scp/admin.php
+
+		-
+			message: "#^Offset 'err' on array\\{\\} in empty\\(\\) does not exist\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^Result of \\|\\| is always false\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 12
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$id might not be defined\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 20
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$staff might not be defined\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 1
+			path: scp/admin.php
+
+		-
+			message: "#^File ends with a trailing whitespace\\. This may cause problems when running the code in the web browser\\. Remove the closing \\?\\> mark or remove the whitespace\\.$#"
+			count: 1
+			path: scp/attachment.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: scp/attachment.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: scp/attachment.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 2
+			path: scp/attachment.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/attachment.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: scp/autocron.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/autocron.php
+
+		-
+			message: "#^Function db_real_escape invoked with 2 parameters, 1 required\\.$#"
+			count: 1
+			path: scp/directory.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 2
+			path: scp/directory.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/dispatch.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 1
+			path: scp/doc_attachment.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/doc_attachment.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 3
+			path: scp/documents.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 3
+			path: scp/documents.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 6
+			path: scp/inventory.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 6
+			path: scp/inventory.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 6
+			path: scp/inventory_catalog.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 6
+			path: scp/inventory_locations.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: scp/kb.php
+
+		-
+			message: "#^Ternary operator condition is always true\\.$#"
+			count: 1
+			path: scp/kb.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 1
+			path: scp/kb.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 3
+			path: scp/kb.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 2
+			path: scp/kb.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 1
+			path: scp/login.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 4
+			path: scp/login.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/logout.php
+
+		-
+			message: "#^Function db_input invoked with 2 parameters, 1 required\\.$#"
+			count: 2
+			path: scp/profile.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 4
+			path: scp/profile.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 4
+			path: scp/profile.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 14
+			path: scp/profile.php
+
+		-
+			message: "#^Variable \\$warn might not be defined\\.$#"
+			count: 2
+			path: scp/profile.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 1
+			path: scp/staff.inc.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 4
+			path: scp/staff.inc.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/task_export.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 1
+			path: scp/taskboards.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 3
+			path: scp/taskboards.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/taskboards.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 1
+			path: scp/tasks.php
+
+		-
+			message: "#^Variable \\$assignedCount might not be defined\\.$#"
+			count: 1
+			path: scp/tasks.php
+
+		-
+			message: "#^Variable \\$msg might not be defined\\.$#"
+			count: 4
+			path: scp/tasks.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 4
+			path: scp/tasks.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 28
+			path: scp/tasks.php
+
+		-
+			message: "#^Class Banlist referenced with incorrect case\\: BanList\\.$#"
+			count: 1
+			path: scp/tickets.php
+
+		-
+			message: "#^Constant TICKET_TABLE_ARCHIVED not found\\.$#"
+			count: 1
+			path: scp/tickets.php
+
+		-
+			message: "#^Left side of && is always true\\.$#"
+			count: 4
+			path: scp/tickets.php
+
+		-
+			message: "#^Method Ticket\\:\\:logActivity\\(\\) invoked with 4 parameters, 2 required\\.$#"
+			count: 3
+			path: scp/tickets.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 4
+			path: scp/tickets.php
+
+		-
+			message: "#^Result of \\|\\| is always false\\.$#"
+			count: 1
+			path: scp/tickets.php
+
+		-
+			message: "#^Variable \\$cfg might not be defined\\.$#"
+			count: 3
+			path: scp/tickets.php
+
+		-
+			message: "#^Variable \\$errors might not be defined\\.$#"
+			count: 2
+			path: scp/tickets.php
+
+		-
+			message: "#^Variable \\$nav might not be defined\\.$#"
+			count: 8
+			path: scp/tickets.php
+
+		-
+			message: "#^Variable \\$sysnotice might not be defined\\.$#"
+			count: 2
+			path: scp/tickets.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 53
+			path: scp/tickets.php
+
+		-
+			message: "#^Variable \\$thisuser might not be defined\\.$#"
+			count: 1
+			path: scp/upload.php

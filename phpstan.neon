@@ -1,0 +1,20 @@
+parameters:
+    level: 4
+    paths:
+        - api
+        - bin
+        - include
+        - scp
+    excludePaths:
+        - include/pear/*
+        - vendor/*
+        - node_modules/*
+        - setup/install/migrations/*
+        - api/v1/controllers/api.php
+    bootstrapFiles:
+        - phpstan-bootstrap.php
+    reportUnmatchedIgnoredErrors: false
+    phpVersion: 80400
+    ignoreErrors: []
+includes:
+    - phpstan-baseline.neon

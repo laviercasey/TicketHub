@@ -21,6 +21,8 @@ jobs:
           extensions: mysqli, pdo_mysql, imap, gd
       - run: composer install --no-interaction
       - run: composer audit
+      - name: PHPStan
+        run: vendor/bin/phpstan analyse --no-progress --memory-limit=512M
 
   test:
     name: Tests
@@ -45,13 +47,21 @@ jobs:
         with:
           php-version: '8.4'
           extensions: mysqli, pdo_mysql, imap, gd
+          coverage: pcov
       - run: composer install --no-interaction
-      - run: vendor/bin/phpunit
+      - run: vendor/bin/phpunit --coverage-clover coverage.xml
         env:
           DB_HOST: 127.0.0.1
           DB_NAME: tickethub_test
           DB_USER: tickethub
           DB_PASS: test
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage.xml
+          retention-days: 30
 
   css-build:
     name: CSS Build

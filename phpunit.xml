@@ -24,4 +24,10 @@
             <file>include/mysql.php</file>
         </exclude>
     </source>
+    <coverage includeUncoveredFiles="true">
+        <report>
+            <clover outputFile="coverage.xml"/>
+            <text outputFile="php://stdout" showOnlySummary="true"/>
+        </report>
+    </coverage>
 </phpunit>

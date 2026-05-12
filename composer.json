@@ -11,7 +11,8 @@
     ],
     "homepage": "https://github.com/laviercasey/TicketHub",
     "require-dev": {
-        "phpunit/phpunit": "^10.5"
+        "phpunit/phpunit": "^10.5",
+        "phpstan/phpstan": "^1.12"
     },
     "autoload": {
         "psr-4": {
