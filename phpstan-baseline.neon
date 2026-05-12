@@ -61,16 +61,6 @@ parameters:
 			path: bin/db-bootstrap.php
 
 		-
-			message: "#^Variable \\$argv might not be defined\\.$#"
-			count: 1
-			path: bin/db-seed.php
-
-		-
-			message: "#^Variable \\$argv might not be defined\\.$#"
-			count: 1
-			path: bin/first-admin.php
-
-		-
 			message: "#^Static call to instance method Staff\\:\\:lookup\\(\\)\\.$#"
 			count: 1
 			path: include/class.apicontroller.php
@@ -1171,31 +1161,6 @@ parameters:
 			path: include/staff/newticket.inc.php
 
 		-
-			message: "#^Constant TIMEZONE_TABLE not found\\.$#"
-			count: 1
-			path: include/staff/preference.inc.php
-
-		-
-			message: "#^Variable \\$cfg might not be defined\\.$#"
-			count: 2
-			path: include/staff/preference.inc.php
-
-		-
-			message: "#^Variable \\$errors might not be defined\\.$#"
-			count: 20
-			path: include/staff/preference.inc.php
-
-		-
-			message: "#^Variable \\$msg might not be defined\\.$#"
-			count: 1
-			path: include/staff/preference.inc.php
-
-		-
-			message: "#^Variable \\$thisuser might not be defined\\.$#"
-			count: 1
-			path: include/staff/preference.inc.php
-
-		-
 			message: "#^Class PageNate referenced with incorrect case\\: Pagenate\\.$#"
 			count: 1
 			path: include/staff/premade.inc.php
@@ -1694,46 +1659,6 @@ parameters:
 			message: "#^Variable \\$topic might not be defined\\.$#"
 			count: 1
 			path: include/staff/topic.inc.php
-
-		-
-			message: "#^Class Banlist referenced with incorrect case\\: BanList\\.$#"
-			count: 1
-			path: include/staff/viewticket.inc.php
-
-		-
-			message: "#^Variable \\$cfg might not be defined\\.$#"
-			count: 2
-			path: include/staff/viewticket.inc.php
-
-		-
-			message: "#^Variable \\$emailBanned might not be defined\\.$#"
-			count: 1
-			path: include/staff/viewticket.inc.php
-
-		-
-			message: "#^Variable \\$errors might not be defined\\.$#"
-			count: 3
-			path: include/staff/viewticket.inc.php
-
-		-
-			message: "#^Variable \\$msgid might not be defined\\.$#"
-			count: 1
-			path: include/staff/viewticket.inc.php
-
-		-
-			message: "#^Variable \\$thisuser might not be defined\\.$#"
-			count: 30
-			path: include/staff/viewticket.inc.php
-
-		-
-			message: "#^Variable \\$ticket might not be defined\\.$#"
-			count: 1
-			path: include/staff/viewticket.inc.php
-
-		-
-			message: "#^Variable \\$warn might not be defined\\.$#"
-			count: 3
-			path: include/staff/viewticket.inc.php
 
 		-
 			message: "#^Class Banlist referenced with incorrect case\\: BanList\\.$#"
